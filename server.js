@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import { fileURLToPath } from "url";
+import methodOverride from "method-override";
 import indexRouter from "./routes/indexRouter.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,6 +12,7 @@ const app = express();
 const db = mongoose.connection;
 
 app.use(express.static("public"));
+app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");

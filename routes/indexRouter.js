@@ -3,6 +3,7 @@ import Todo from "../models/todo.js";
 
 const router = express.Router();
 
+// Home displaying tasks - /
 router.get("/", async (req, res) => {
   try {
     const todoList = await Todo.find();
@@ -12,6 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// New tasks page - /new
 router.get("/new", (req, res) => {
   res.render("newTodo");
 });
@@ -23,9 +25,24 @@ router.post("/", async (req, res) => {
   try {
     await todo.save();
     res.redirect("/");
-  } catch (error) {
+  } catch {
+    res.render("newTodo", {
+      errorMessage: "Error adding task",
+    });
+  }
+});
+
+// Delete tasks - DELETE
+router.delete("/:id", async (req, res) => {
+  let todo;
+  try {
+    todo = await Todo.findById(req.params.id);
+    await Todo.deleteOne({ _id: req.params.id });
     res.redirect("/");
-    console.log(error);
+  } catch {
+    if (todo == null) {
+      res.redirect("/");
+    }
   }
 });
 
