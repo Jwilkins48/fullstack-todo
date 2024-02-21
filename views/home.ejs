@@ -18,7 +18,7 @@
         <div class="title-container">
           <h1 class="home-title">To Do</h1>
           <a class="add" href="/new"
-            ><i class="fa-solid fa-plus"></i> Add Task</a
+            ><i class="fa-solid fa-plus plus"></i> Add Task</a
           >
         </div>
 
@@ -26,8 +26,14 @@
           <% todoList.forEach(task => { %>
 
           <div class="card">
-            <%= task.task %> <%- include('./partials/deleteForm.ejs', {url:
-            `/${task.id}`}) %>
+            <%= task.task %>
+            <div class="icon-container">
+              <a href="<%=task.id%>/edit"
+                ><i class="fa-regular fa-pen-to-square edit"></i
+              ></a>
+
+              <%- include('./partials/deleteForm.ejs', {url: `/${task.id}`}) %>
+            </div>
           </div>
 
           <% }) %>

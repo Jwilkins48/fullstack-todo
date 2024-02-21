@@ -6,14 +6,21 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <h1 class="home-title">Add To Do</h1>
-    <%- include('./partials/errorMessage.ejs') %>
-    <form action="/" method="post">
-      <label for="todo">Task:</label>
-      <input type="text" name="todo" id="todo" />
+    <div class="container">
+      <div class="content-container">
+        <h1 class="new-title">Add To Do</h1>
+        <div class="error"><%- include('./partials/errorMessage.ejs') %></div>
 
-      <a href="/">Cancel</a>
-      <button type="submit">Add Task</button>
-    </form>
+        <form action="/" method="post">
+          <label class="task" for="todo">Task</label>
+          <input class="task-input" type="text" name="todo" id="todo" />
+
+          <div class="btn-container">
+            <a class="cancelBtn btn" href="/">Cancel</a>
+            <button class="addBtn btn" type="submit">Add Task</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

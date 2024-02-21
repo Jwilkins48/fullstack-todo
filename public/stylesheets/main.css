@@ -4,10 +4,16 @@
   margin: 0;
   padding: 0;
   font-family: "Raleway", sans-serif;
+  color: #3d3b40;
 }
+
+/* HOME PAGE */
 
 body {
   background: #8cb9bd;
+}
+.error {
+  margin: 10px 0;
 }
 .container {
   width: 100%;
@@ -16,7 +22,11 @@ body {
   justify-content: center;
   padding: 2rem;
 }
+.plus {
+  color: #6962ad;
+}
 .add {
+  color: #6962ad;
   list-style-type: none;
   text-decoration: none;
   margin-left: 15px;
@@ -47,12 +57,77 @@ body {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: #c9d9e0;
 }
-.delete {
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.delete,
+.edit {
   color: #6962ad;
   cursor: pointer;
   background: transparent;
   border: transparent;
 }
-.trash:hover {
+.trash:hover,
+.edit:hover {
   color: #6c22a6;
+}
+
+/* NEW TASK PAGE */
+.new-title {
+  margin-bottom: 1.5rem;
+  text-decoration: underline;
+  font-size: 2rem;
+}
+.btn-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+.task {
+  font-size: 1.5rem;
+}
+.task-input {
+  padding: 1rem 0.5rem;
+  border-radius: 6px;
+  width: 20rem;
+  border: 2px solid #54a8af;
+  font-size: 15px;
+}
+.btn {
+  padding: 6px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 1px solid #6962ad;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 5px 2px;
+}
+.addBtn {
+  background-color: #6962ad;
+  color: white;
+}
+.addBtn:hover {
+  background-color: transparent;
+  color: #6c22a6;
+}
+.cancelBtn:hover {
+  background-color: #6962ad;
+  color: white;
+}
+
+/* EDIT PAGE START */
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.edit-title {
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
+  font-size: 2rem;
 }

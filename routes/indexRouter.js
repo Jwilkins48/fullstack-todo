@@ -3,7 +3,7 @@ import Todo from "../models/todo.js";
 
 const router = express.Router();
 
-// Home displaying tasks - /
+// Home - displaying tasks - /
 router.get("/", async (req, res) => {
   try {
     const todoList = await Todo.find();
@@ -17,6 +17,7 @@ router.get("/", async (req, res) => {
 router.get("/new", (req, res) => {
   res.render("newTodo");
 });
+
 // Create new task - POST
 router.post("/", async (req, res) => {
   const todo = new Todo({
@@ -29,6 +30,33 @@ router.post("/", async (req, res) => {
     res.render("newTodo", {
       errorMessage: "Error adding task",
     });
+  }
+});
+
+// Edit tasks page - GET
+router.get("/:id/edit", async (req, res) => {
+  try {
+    const todo = await Todo.findById(req.params.id);
+    res.render("edit", { todo: todo });
+  } catch {
+    res.redirect("/");
+  }
+});
+
+// Update task - PUT
+router.put("/:id", async (req, res) => {
+  let todo;
+  try {
+    todo = await Todo.findById(req.params.id);
+    todo.task = req.body.todo;
+    await todo.save();
+    res.redirect("/");
+  } catch {
+    if (todo == null || todo == "") {
+      res.redirect("/");
+    } else {
+      res.render("edit", { todo: todo, errorMessage: "Error updating task" });
+    }
   }
 });
 
